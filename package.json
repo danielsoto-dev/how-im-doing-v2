@@ -1,0 +1,50 @@
+{
+  "name": "how-im-doing-v2",
+  "version": "1.0.0",
+  "description": "An app for calculating grades, by a student for the students",
+  "main": "App.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build",
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielsoto-dev/how-im-doing-v2.git"
+  },
+  "keywords": [
+    "react",
+    "styled-components",
+    "html",
+    "javascript"
+  ],
+  "author": "Daniel Soto Jaimes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielsoto-dev/how-im-doing-v2/issues"
+  },
+  "homepage": "https://github.com/danielsoto-dev/how-im-doing-v2#readme",
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.2",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "parcel": "^2.0.1",
+    "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}
