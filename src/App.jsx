@@ -1,7 +1,5 @@
-import { render } from "react-dom";
 import Header from "./components/Header";
 import Main from "./Views/Main";
-const rootElement = document.getElementById("root");
 export const App = () => {
   return (
     <div>
@@ -10,5 +8,3 @@ export const App = () => {
     </div>
   );
 };
-
-render(<App />, rootElement);

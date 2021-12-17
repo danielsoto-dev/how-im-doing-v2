@@ -1,25 +1,28 @@
 import { useState } from "react";
-
-export default GradeList = () => {
-  const [list, setList] = useState([]);
-
+import { useSelector, useDispatch } from "react-redux";
+import { addGrade, removeGrade } from "../../actions";
+import GradeSlot from "../GradeSlot";
+export default GradegradeList = () => {
+  const gradeList = useSelector((state) => state.gradeList);
+  const dispatch = useDispatch();
+  console.log("grade", gradeList);
   const handleClick = (e) => {
-    e.preventDefault;
-    setList([...list, Math.random()]);
+    e.preventDefault();
+    dispatch(addGrade({ grade: 5, percentage: 20 }));
   };
 
   return (
     <div>
-      {list.length > 0
-        ? list.map((el, id) => {
-            return (
-              <p key={el}>
-                Hi im the el #{id} and i have {el}
-              </p>
-            );
-          })
-        : null}
+      {/* <form onSubmit={handleClick}> */}
+      {gradeList.length > 0 ? (
+        gradeList.map((item) => {
+          return <GradeSlot {...item} key={item.uuid} />;
+        })
+      ) : (
+        <p>How empty... 🦗🦗🦗</p>
+      )}
       <button onClick={handleClick}>Add a term</button>
+      {/* </form> */}
     </div>
   );
 };
