@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default Header = () => {
+export const Header = () => {
   return (
     <SHeader>
       <a href="/">

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import GradeList from "../../components/GradeList";
-export default Main = () => {
+export const Main = () => {
   return (
     <Wrapper>
       <GradesContainer>
@@ -13,9 +13,10 @@ export default Main = () => {
 };
 const Wrapper = styled.div`
   padding: 1.5rem;
+  min-height: calc(100% - 160px);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const GradesContainer = styled.div`
@@ -23,6 +24,5 @@ const GradesContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   max-width: 1400px;
 `;

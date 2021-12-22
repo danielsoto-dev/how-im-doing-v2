@@ -25,6 +25,10 @@ export const reducer = (state = initalState, action) => {
     };
   }
   if (action.type == CLEAR_LIST) {
+    return {
+      ...state.config,
+      gradeList:[]
+    }
   }
   return state;
 };
