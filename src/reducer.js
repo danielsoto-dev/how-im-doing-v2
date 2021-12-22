@@ -1,4 +1,4 @@
-import { ADD_GRADE, CLEAR_LIST, REMOVE_GRADE } from "./actions";
+import { ADD_GRADE, CLEAR_LIST, REMOVE_GRADE, UPDATE_GRADE } from "./actions";
 
 export const initalState = {
   config: {
@@ -9,24 +9,46 @@ export const initalState = {
 };
 let id = 0;
 export const reducer = (state = initalState, action) => {
-  if (action.type == ADD_GRADE) {
-    const grade = { ...action.payload, uuid: id++ };
+  //console.log(state, action)
+  const {gradeList:currentGradeList, config} = state;
+  const {type, payload} = action;
+  //! Rename to be consistent 
+  if (type == ADD_GRADE) {
+    const defaultGrade = {
+      grade: '5',
+      percentage: '20%',
+      name:''
+    }
+    const newGrade = { ...defaultGrade, uuid: id++ };
     return {
-      ...state.config,
-      gradeList: [...state.gradeList, grade],
+      ...initalState,
+      gradeList: [...currentGradeList, newGrade],
     };
   }
-  if (action.type == REMOVE_GRADE) {
+  if (type == REMOVE_GRADE) {
+    const updatedGradeList = currentGradeList.filter((el) => el.uuid !== payload.uuid)
     return {
-      ...state.config,
-      gradeList: state.gradeList.filter(
-        (el) => el.uuid !== action.payload.uuid
-      ),
+      ...initalState,
+      gradeList: updatedGradeList
     };
   }
-  if (action.type == CLEAR_LIST) {
+  if (type == UPDATE_GRADE) {
+    const dirtyGradeUUID= currentGradeList.findIndex( ({uuid}) => uuid === payload.uuid)
+    console.log(dirtyGradeUUID)
+    const updatedSlot = {
+      ...currentGradeList[dirtyGradeUUID],
+      [payload.field]:payload.value
+    }
+    const updatedGradeList = [...currentGradeList]
+    updatedGradeList[dirtyGradeUUID] = updatedSlot
     return {
-      ...state.config,
+      ...initalState,
+      gradeList: updatedGradeList
+    };
+  }
+  if (type == CLEAR_LIST) {
+    return {
+      ...initalState,
       gradeList:[]
     }
   }

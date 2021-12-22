@@ -9,7 +9,7 @@ export default GradegradeList = () => {
   console.log("grade", gradeList);
   const handleClickAdd = (e) => {
     e.preventDefault();
-    dispatch(addGrade({ grade: 5, percentage: 20 }));
+    dispatch(addGrade());
   };
   const handleClickReset = (e) => {
     e.preventDefault();
