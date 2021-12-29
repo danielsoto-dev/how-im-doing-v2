@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
+import { HiPlusSm } from 'react-icons/hi';
+import { MdDelete } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { addGrade, clearList } from '../../actions';
 import { removeGrade, updateGrade } from '../../actions';
@@ -53,12 +55,12 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 placeholder="%"
                 value={percentage}
             />
-            <button type="button" onClick={() => dispatch(addGrade())}>
-                ➕
-            </button>
-            <button type="button" onClick={() => handleRemove(uuid)}>
-                ❌
-            </button>
+            <a onClick={() => dispatch(addGrade())}>
+                <AddIcon />
+            </a>
+            <a type="button" onClick={() => handleRemove(uuid)}>
+                <DeleteIcon />
+            </a>
         </Slot>
     );
 };
@@ -67,6 +69,7 @@ const Slot = styled.div`
     padding: 0.5rem 1.25rem;
     background-color: #3590f3;
     display: grid;
+    align-items: center;
     grid-template-columns:
         minmax(145px, 400px) repeat(2, minmax(25px, 60px))
         repeat(2, 45px);
@@ -83,4 +86,15 @@ const Input = styled.input`
     border: none;
     border-radius: 24px;
     background-color: #e5efff;
+`;
+
+const AddIcon = styled(HiPlusSm)`
+    margin-inline: auto;
+    cursor: pointer;
+    color: var(--white);
+`;
+const DeleteIcon = styled(MdDelete)`
+    margin-inline: auto;
+    cursor: pointer;
+    color: var(--white);
 `;
