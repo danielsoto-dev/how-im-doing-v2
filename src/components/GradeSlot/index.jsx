@@ -1,31 +1,21 @@
-import { useRef } from 'react';
-import styled from 'styled-components';
-import { HiPlusSm } from 'react-icons/hi';
-import { MdDelete } from 'react-icons/md';
+import { IconContext } from 'react-icons/lib';
 import { useDispatch } from 'react-redux';
-import { addGrade, clearList } from '../../actions';
+import { addGrade } from '../../actions';
+import { IconButton, AddIcon, DeleteIcon, Slot } from './styles';
 import { removeGrade, updateGrade } from '../../actions';
 export default GradeSlot = ({ name, grade, percentage, uuid }) => {
-    const firstInputRef = useRef();
     const dispatch = useDispatch();
-    const handleRemove = (uuid) => {
+    const handleRemove = () => {
         dispatch(removeGrade({ uuid }));
+    };
+    const handleAdd = () => {
+        dispatch(addGrade());
     };
     const handleChange = (e) => {
         const { value, id: field } = e.target;
         console.log(value, field);
         dispatch(updateGrade({ value, field, uuid }));
     };
-    /**
-  const handleChangeGrade = (e) => {
-    setGrade(e.target.value);
-  };
-  const handleChangePercentage = (e) => {
-    setPercentage(e.target.value);
-  };
-  const handleChangeName = (e) => {
-    setName(e.target);
-  }; */
     return (
         <Slot key={uuid}>
             <Input
@@ -55,46 +45,14 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 placeholder="%"
                 value={percentage}
             />
-            <a onClick={() => dispatch(addGrade())}>
-                <AddIcon />
-            </a>
-            <a type="button" onClick={() => handleRemove(uuid)}>
-                <DeleteIcon />
-            </a>
+            <IconContext.Provider value={{ style: { fontSize: '1.5rem' } }}>
+                <IconButton type="button" onClick={handleAdd}>
+                    <AddIcon />
+                </IconButton>
+                <IconButton type="button" onClick={handleRemove}>
+                    <DeleteIcon />
+                </IconButton>
+            </IconContext.Provider>
         </Slot>
     );
 };
-
-const Slot = styled.div`
-    padding: 0.5rem 1.25rem;
-    background-color: #3590f3;
-    display: grid;
-    align-items: center;
-    grid-template-columns:
-        minmax(145px, 400px) repeat(2, minmax(25px, 60px))
-        repeat(2, 45px);
-    column-gap: 0.25rem;
-    &:hover,
-    &:focus-within {
-        background-color: var(--active-blue);
-    }
-`;
-
-const Input = styled.input`
-    height: 25px;
-    padding: 1px 10px;
-    border: none;
-    border-radius: 24px;
-    background-color: #e5efff;
-`;
-
-const AddIcon = styled(HiPlusSm)`
-    margin-inline: auto;
-    cursor: pointer;
-    color: var(--white);
-`;
-const DeleteIcon = styled(MdDelete)`
-    margin-inline: auto;
-    cursor: pointer;
-    color: var(--white);
-`;

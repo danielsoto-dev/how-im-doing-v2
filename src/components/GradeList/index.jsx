@@ -30,13 +30,13 @@ export default GradegradeList = () => {
                     <p>How empty... 🦗🦗🦗</p>
                 )}
                 <ButtonContainer>
-                    <button type="button" onClick={handleClickAdd}>
-                        Add a term
-                    </button>
-                    <button type="button" onClick={handleClickReset}>
+                    <Button type="button" onClick={handleClickReset}>
                         Reset List
-                    </button>
-                    <button type="submit">Calc 🧮</button>
+                    </Button>
+                    <Button type="button" onClick={handleClickAdd}>
+                        Add a term
+                    </Button>
+                    <Button type="submit">Calc 🧮</Button>
                 </ButtonContainer>
             </Form>
         </Fragment>
@@ -54,4 +54,18 @@ const ButtonContainer = styled.div`
     gap: 1rem;
     margin-inline: auto;
     margin-top: 1rem;
+`;
+
+const Button = styled.button`
+    padding: 0.4rem 0.75rem;
+    background-color: var(--white);
+    color: #000;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    border: none;
+    anim &:hover,
+    &:focus {
+        box-shadow: 0px 0px 0px 1px black;
+    }
 `;
