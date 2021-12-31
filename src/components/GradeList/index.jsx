@@ -1,8 +1,12 @@
 import { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addGrade, clearList } from '../../actions';
-import styled from 'styled-components';
+import { Form, ButtonContainer, Button } from './styles';
 import GradeSlot from '../GradeSlot';
+import {
+    getFinalScore,
+    isTotalPercentageCorrect,
+} from '../../utils/calculations';
 export default GradegradeList = () => {
     const gradeList = useSelector((state) => state.gradeList);
     const dispatch = useDispatch();
@@ -16,7 +20,12 @@ export default GradegradeList = () => {
     };
     const handleClickSubmit = (e) => {
         e.preventDefault();
-        console.log('The current state is: ', gradeList);
+        if (isTotalPercentageCorrect(gradeList)) {
+            console.log('The total percentage make sense');
+        } else {
+            console.log('An error has been made');
+        }
+        getFinalScore(gradeList);
         /* make the calculations */
     };
     return (
@@ -42,30 +51,3 @@ export default GradegradeList = () => {
         </Fragment>
     );
 };
-
-const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    gap: 0.05rem;
-`;
-
-const ButtonContainer = styled.div`
-    display: flex;
-    gap: 1rem;
-    margin-inline: auto;
-    margin-top: 1rem;
-`;
-
-const Button = styled.button`
-    padding: 0.4rem 0.75rem;
-    background-color: var(--white);
-    color: #000;
-    cursor: pointer;
-    outline: none;
-    font-weight: bold;
-    border: none;
-    anim &:hover,
-    &:focus {
-        box-shadow: 0px 0px 0px 1px black;
-    }
-`;

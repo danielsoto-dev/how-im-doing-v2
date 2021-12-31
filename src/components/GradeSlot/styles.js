@@ -10,13 +10,17 @@ export const Slot = styled.div`
         minmax(145px, 400px) repeat(2, minmax(25px, 60px))
         repeat(2, 45px);
     column-gap: 0.25rem;
+    //Exit duration
+    transition: background-color 300ms;
     &:hover,
     &:focus-within {
+        //Enter duration
+        transition: background-color 200ms;
         background-color: var(--active-blue);
     }
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
     height: 25px;
     padding: 1px 10px;
     border: none;

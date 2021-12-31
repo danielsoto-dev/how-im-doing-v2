@@ -1,7 +1,7 @@
 import { IconContext } from 'react-icons/lib';
 import { useDispatch } from 'react-redux';
 import { addGrade } from '../../actions';
-import { IconButton, AddIcon, DeleteIcon, Slot } from './styles';
+import { IconButton, AddIcon, DeleteIcon, Slot, Input } from './styles';
 import { removeGrade, updateGrade } from '../../actions';
 export default GradeSlot = ({ name, grade, percentage, uuid }) => {
     const dispatch = useDispatch();
@@ -13,11 +13,14 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
     };
     const handleChange = (e) => {
         const { value, id: field } = e.target;
-        console.log(value, field);
         dispatch(updateGrade({ value, field, uuid }));
     };
     return (
-        <Slot key={uuid}>
+        <Slot
+            key={uuid}
+            // className={shake ? 'shake' : false}
+            // onAnimationEnd={() => setShake(false)}
+        >
             <Input
                 required
                 id="name"
