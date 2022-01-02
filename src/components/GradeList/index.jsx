@@ -20,12 +20,14 @@ export default GradegradeList = () => {
     };
     const handleClickSubmit = (e) => {
         e.preventDefault();
-        if (isTotalPercentageCorrect(gradeList)) {
-            console.log('The total percentage make sense');
+        if (!isTotalPercentageCorrect({ grades: gradeList })) {
+            //add logic for percentage error
+            return;
         } else {
-            console.log('An error has been made');
+            //if 100 get final, otherwise, calc the remaining
         }
-        getFinalScore(gradeList);
+        const finalScore = getFinalScore({ grades: gradeList });
+        alert(finalScore);
         /* make the calculations */
     };
     return (

@@ -22,7 +22,6 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
             // onAnimationEnd={() => setShake(false)}
         >
             <Input
-                required
                 id="name"
                 aria-label="Name Of Slot input"
                 type="text"
