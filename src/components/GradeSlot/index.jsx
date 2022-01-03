@@ -14,11 +14,25 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
     };
     const handleChange = (e) => {
         const { value, id: field } = e.target;
+        if (field === 'percentage' && !isValidPercentage(value)) {
+            return;
+        }
+
         dispatch(updateGrade({ value, field, uuid }));
     };
     const handleOnBlurPercentage = ({ target: { value, id: field } }) => {
-        if (!value.includes('%'))
-            dispatch(updateGrade({ value: `${value}%`, field, uuid }));
+        if (!value.includes('%')) {
+            value = `${value}%`;
+        }
+        dispatch(updateGrade({ value, field, uuid }));
+    };
+    const handleOnFocusPercentage = ({ target: { value, id: field } }) => {
+        const hasPercentageSymbol = value.includes('%');
+        if (hasPercentageSymbol) {
+            value = value.replace('%', '');
+        }
+
+        dispatch(updateGrade({ value, field, uuid }));
     };
     return (
         <Slot
@@ -51,6 +65,7 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 onChange={handleChange}
                 placeholder="%"
                 value={percentage}
+                onFocus={handleOnFocusPercentage}
                 onBlur={handleOnBlurPercentage}
                 // isValid={isValidPercentage(percentage)} // false or true
             />
