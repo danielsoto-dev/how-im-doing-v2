@@ -7,6 +7,8 @@
  */
 const INITIAL_COUNT = 0;
 //Naming
+
+// this percentage validation is unnecesary
 const percentageToNumber = (percentage) => {
     return Number(percentage.split('%')[0]);
 };

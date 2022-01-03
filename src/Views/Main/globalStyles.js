@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     --blue: #3590f3;
     --white: #fff;
     --active-blue: #52a3fadc;
+    --error-red: rgba(255, 0, 0, 0.1);
 }
 
 /*

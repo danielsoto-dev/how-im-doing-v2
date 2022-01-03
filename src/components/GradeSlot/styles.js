@@ -25,9 +25,11 @@ export const Input = styled.input`
     padding: 1px 10px;
     border: none;
     border-radius: 24px;
-    background-color: '#e5efff';
+    background-color: ${(props) =>
+        props.error ? 'var(--error-red)' : '#e5efff'};
     &:focus {
-        background-color: var(--white);
+        background-color: ${(props) =>
+            props.error ? 'var(--error-red)' : 'var(--white)'};
     }
 `;
 
