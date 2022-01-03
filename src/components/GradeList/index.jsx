@@ -5,6 +5,7 @@ import { Form, ButtonContainer, Button } from './styles';
 import GradeSlot from '../GradeSlot';
 import {
     getFinalScore,
+    getNeededScoreForDesiredScore,
     isTotalPercentageCorrect,
 } from '../../utils/calculations';
 export default GradegradeList = () => {
@@ -22,20 +23,32 @@ export default GradegradeList = () => {
         e.preventDefault();
         if (!isTotalPercentageCorrect({ grades: gradeList })) {
             //add logic for percentage error
+            console.log('no tiene sentido el porcentage');
             return;
         } else {
+            console.log('El total tiene sentido');
             //if 100 get final, otherwise, calc the remaining
         }
         const finalScore = getFinalScore({ grades: gradeList });
+        getNeededScoreForDesiredScore({ desiredScore: 5, grades: gradeList });
         alert(finalScore);
         /* make the calculations */
     };
+
     return (
         <Fragment>
             <Form onSubmit={handleClickSubmit}>
                 {gradeList.length > 0 ? (
-                    gradeList.map((item) => {
-                        return <GradeSlot {...item} key={item.uuid} />;
+                    gradeList.map(({ grade, percentage, uuid, name }) => {
+                        return (
+                            <GradeSlot
+                                percentage={percentage}
+                                grade={grade}
+                                name={name}
+                                uuid={uuid}
+                                key={uuid}
+                            />
+                        );
                     })
                 ) : (
                     <p>How empty... 🦗🦗🦗</p>

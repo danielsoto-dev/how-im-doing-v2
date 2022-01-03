@@ -38,7 +38,6 @@ export const reducer = (state = initalState, action) => {
         const dirtyGradeUUID = currentGradeList.findIndex(
             ({ uuid }) => uuid === payload.uuid
         );
-        console.log(dirtyGradeUUID);
         const updatedSlot = {
             ...currentGradeList[dirtyGradeUUID],
             [payload.field]: payload.value,
