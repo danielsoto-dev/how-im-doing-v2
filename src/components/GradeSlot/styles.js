@@ -8,7 +8,7 @@ export const Slot = styled.div`
     align-items: center;
     grid-template-columns:
         minmax(145px, 400px) repeat(2, minmax(25px, 60px))
-        repeat(2, 45px);
+        repeat(2, minmax(20px, 45px));
     column-gap: 0.25rem;
     //Exit duration
     transition: background-color 300ms;

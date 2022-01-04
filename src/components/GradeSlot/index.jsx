@@ -14,11 +14,21 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
     };
     const handleChange = (e) => {
         const { value, id: field } = e.target;
-        if (field === 'percentage' && !isValidPercentage(value)) {
-            return;
+        let isValid = true;
+        switch (field) {
+            case 'percentage':
+                if (!isValidPercentage(value)) {
+                    isValid = false;
+                }
+                break;
+            case 'grade':
+                break;
+            default:
+                break;
         }
-
-        dispatch(updateGrade({ value, field, uuid }));
+        if (isValid) {
+            dispatch(updateGrade({ value, field, uuid }));
+        }
     };
     const handleOnBlurPercentage = ({ target: { value, id: field } }) => {
         if (!value.includes('%')) {
