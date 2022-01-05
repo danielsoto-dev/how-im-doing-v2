@@ -1,12 +1,12 @@
-import { IconContext } from 'react-icons/lib';
-import { useDispatch } from 'react-redux';
-import { addGrade } from '../../actions';
-import { IconButton, AddIcon, DeleteIcon, Slot, Input } from './styles';
-import { removeGrade, updateGrade } from '../../actions';
+import { IconContext } from "react-icons/lib";
+import { useDispatch } from "react-redux";
+import { addGrade } from "../../actions";
+import { IconButton, AddIcon, DeleteIcon, Slot, Input } from "./styles";
+import { removeGrade, updateGrade } from "../../actions";
 import {
     isValidNumber,
     isValidPercentage,
-} from '../../utils/field-validations';
+} from "../../utils/field-validations";
 export default GradeSlot = ({ name, grade, percentage, uuid }) => {
     const dispatch = useDispatch();
     const handleRemove = () => {
@@ -16,43 +16,43 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
         dispatch(addGrade());
     };
     const handleChange = (e) => {
+        e.preventDefault();
         const { value, id: field } = e.target;
-        let isValid = true;
+        let isValid = false;
         switch (field) {
-            case 'percentage':
-                if (!isValidPercentage(value)) {
-                    isValid = false;
+            case "percentage":
+                if (isValidPercentage(value)) {
+                    isValid = true;
                 }
                 break;
-            case 'grade':
-                if (!isValidNumber(value)) {
-                    isValid = false;
+            case "grade":
+                if (isValidNumber(value)) {
+                    isValid = true;
                 }
-                break;
             default:
                 break;
         }
-        if (isValid === true) {
+        if (isValid) {
             dispatch(updateGrade({ value, field, uuid }));
         }
     };
     const handleOnBlurPercentage = ({ target: { value, id: field } }) => {
-        if (!value.includes('%')) {
+        if (!value.includes("%")) {
             value = `${value}%`;
         }
         dispatch(updateGrade({ value, field, uuid }));
     };
     // const handleOnFocusPercentage = ({ target: { value, id: field } }) => {
-    //     const hasPercentageSymbol = value.includes('%');
+    //     const hasPercentageSymbol = value.includes("%");
     //     if (hasPercentageSymbol) {
-    //         value = value.replace('%', '');
+    //         value = value.replace("%", "");
     //     }
     //     dispatch(updateGrade({ value, field, uuid }));
     // };
     return (
         <Slot
             key={uuid}
-            // className={shake ? 'shake' : false}
+            // className={shake ? "shake" : false}
             // onAnimationEnd={() => setShake(false)}
         >
             <Input
@@ -84,7 +84,7 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 onBlur={handleOnBlurPercentage}
                 // isValid={isValidPercentage(percentage)} // false or true
             />
-            <IconContext.Provider value={{ style: { fontSize: '1.5rem' } }}>
+            <IconContext.Provider value={{ style: { fontSize: "24px" } }}>
                 <IconButton type="button" onClick={handleAdd}>
                     <AddIcon />
                 </IconButton>

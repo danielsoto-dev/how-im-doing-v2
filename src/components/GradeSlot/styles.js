@@ -1,14 +1,14 @@
-import styled from 'styled-components';
-import { HiPlusSm } from 'react-icons/hi';
-import { MdDelete } from 'react-icons/md';
+import styled from "styled-components";
+import { HiPlusSm } from "react-icons/hi";
+import { MdDelete } from "react-icons/md";
 export const Slot = styled.div`
     padding: 0.5rem 1.25rem;
     background-color: #3590f3;
     display: grid;
     align-items: center;
     grid-template-columns:
-        minmax(145px, 400px) repeat(2, minmax(25px, 60px))
-        repeat(2, minmax(20px, 45px));
+        minmax(145px, 400px) repeat(2, minmax(5ch, 60px))
+        repeat(2, minmax(30px, 35px));
     column-gap: 0.25rem;
     //Exit duration
     transition: background-color 300ms;
@@ -25,7 +25,7 @@ export const Input = styled.input`
     padding: 1px 10px;
     border: none;
     border-radius: 24px;
-    background-color: '#e5efff';
+    background-color: #e5efff;
     &:focus {
         background-color: var(--white);
     }
