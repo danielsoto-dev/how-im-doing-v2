@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 import { addGrade } from '../../actions';
 import { IconButton, AddIcon, DeleteIcon, Slot, Input } from './styles';
 import { removeGrade, updateGrade } from '../../actions';
-import { isValidPercentage } from '../../utils/field-validations';
+import {
+    isValidNumber,
+    isValidPercentage,
+} from '../../utils/field-validations';
 export default GradeSlot = ({ name, grade, percentage, uuid }) => {
     const dispatch = useDispatch();
     const handleRemove = () => {
@@ -22,11 +25,14 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 }
                 break;
             case 'grade':
+                if (!isValidNumber(value)) {
+                    isValid = false;
+                }
                 break;
             default:
                 break;
         }
-        if (isValid) {
+        if (isValid === true) {
             dispatch(updateGrade({ value, field, uuid }));
         }
     };
@@ -36,14 +42,13 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
         }
         dispatch(updateGrade({ value, field, uuid }));
     };
-    const handleOnFocusPercentage = ({ target: { value, id: field } }) => {
-        const hasPercentageSymbol = value.includes('%');
-        if (hasPercentageSymbol) {
-            value = value.replace('%', '');
-        }
-
-        dispatch(updateGrade({ value, field, uuid }));
-    };
+    // const handleOnFocusPercentage = ({ target: { value, id: field } }) => {
+    //     const hasPercentageSymbol = value.includes('%');
+    //     if (hasPercentageSymbol) {
+    //         value = value.replace('%', '');
+    //     }
+    //     dispatch(updateGrade({ value, field, uuid }));
+    // };
     return (
         <Slot
             key={uuid}
@@ -75,7 +80,7 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 onChange={handleChange}
                 placeholder="%"
                 value={percentage}
-                onFocus={handleOnFocusPercentage}
+                // onFocus={handleOnFocusPercentage}
                 onBlur={handleOnBlurPercentage}
                 // isValid={isValidPercentage(percentage)} // false or true
             />

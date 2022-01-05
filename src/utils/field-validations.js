@@ -10,7 +10,7 @@ export const isValidPercentage = (string) => {
     return isAMatch;
 };
 export const isValidNumber = (string) => {
-    const pattern = new RegExp(`${VALID_NUMBER_REGEX}$`);
+    const pattern = new RegExp(`${VALID_NUMBER_REGEX}$|${EMPTY_STRING_REGEX}`);
     const isAMatch = pattern.test(string);
     return isAMatch;
 };
