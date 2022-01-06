@@ -13,8 +13,8 @@ export const Overlay = styled.div`
 `;
 // Make this configurable by props
 export const ModalContainer = styled.div`
-    width: 500px;
-    min-height: 100px;
+    width: ${({ width }) => (width ? width : "500px")};
+    min-height: ${({ minHeight }) => (minHeight ? minHeight : "100px")};
     background: #fff;
     position: relative;
     border-radius: 5px;

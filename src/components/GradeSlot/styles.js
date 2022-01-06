@@ -25,8 +25,10 @@ export const Input = styled.input`
     padding: 1px 10px;
     border: none;
     border-radius: 24px;
+    transition: background-color 300ms;
     background-color: #e5efff;
     &:focus {
+        transition: background-color 200ms;
         background-color: var(--white);
     }
 `;

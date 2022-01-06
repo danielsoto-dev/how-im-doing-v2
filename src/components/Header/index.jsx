@@ -1,7 +1,7 @@
-import styled from "styled-components";
-
 import Modal from "../../components/Modal";
+import { SHeader, Logo, NavBar } from "./styles";
 import { useState } from "react";
+import ConfigForm from "../ConfigForm";
 export default Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => {
@@ -28,29 +28,8 @@ export default Header = () => {
                 handleClose={closeModal}
                 title={"Config"}
             >
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Veritatis reprehenderit voluptatem blanditiis laudantium
-                eligendi, quae deserunt explicabo consequatur nesciunt. Tempore!
+                <ConfigForm />
             </Modal>
         </>
     );
 };
-
-const SHeader = styled.header`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--blue);
-    color: var(--white);
-    height: 80px;
-`;
-
-const Logo = styled.h1`
-    font-size: 2rem;
-    text-align: center;
-`;
-const NavBar = styled.nav`
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-`;

@@ -4,6 +4,7 @@ export default Modal = ({
     children,
     width,
     height,
+    minHeight,
     onClose,
     isOpen,
     handleClose,
@@ -15,7 +16,11 @@ export default Modal = ({
     return (
         <>
             <Overlay>
-                <ModalContainer>
+                <ModalContainer
+                    width={width}
+                    minHeight={minHeight}
+                    height={height}
+                >
                     <ModalHeader>
                         <h3>{title}</h3>
                     </ModalHeader>
