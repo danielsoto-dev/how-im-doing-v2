@@ -1,5 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+import "@fontsource/open-sans";
 export const GlobalStyle = createGlobalStyle`
+
 :root {
     --blue: #3590f3;
     --white: #fff;
@@ -34,8 +36,8 @@ body,
   5. Improve text rendering
 */
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans';
+    font-size:20px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }

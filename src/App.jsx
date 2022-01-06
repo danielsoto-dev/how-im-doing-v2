@@ -1,8 +1,9 @@
-import { Header } from './components/Header';
-import { Main } from './Views/Main';
-import { Footer } from './components/Footer';
-import { Fragment } from 'react';
-import { GlobalStyle } from './Views/Main/globalStyles';
+import Header from "./components/Header";
+import Main from "./Views/Main";
+import Footer from "./components/Footer";
+import Modal from "./components/Modal";
+import { Fragment } from "react";
+import { GlobalStyle } from "./Views/Main/globalStyles";
 export const App = () => {
     return (
         <Fragment>
@@ -10,6 +11,7 @@ export const App = () => {
             <Header />
             <Main />
             <Footer />
+            <Modal />
         </Fragment>
     );
 };

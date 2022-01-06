@@ -1,13 +1,13 @@
-import { Fragment } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addGrade, clearList } from '../../actions';
-import { Form, ButtonContainer, Button } from './styles';
-import GradeSlot from '../GradeSlot';
+import { Fragment } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addGrade, clearList } from "../../actions";
+import { Form, ButtonContainer, Button } from "./styles";
+import GradeSlot from "../GradeSlot";
 import {
     getFinalScore,
     getNeededScoreForDesiredScore,
     isTotalPercentageCorrect,
-} from '../../utils/calculations';
+} from "../../utils/calculations";
 export default GradegradeList = () => {
     const gradeList = useSelector((state) => state.gradeList);
     const dispatch = useDispatch();
@@ -23,10 +23,10 @@ export default GradegradeList = () => {
         e.preventDefault();
         if (!isTotalPercentageCorrect({ grades: gradeList })) {
             //add logic for percentage error
-            console.log('no tiene sentido el porcentage');
+            console.log("no tiene sentido el porcentage");
             return;
         } else {
-            console.log('El total tiene sentido');
+            console.log("El total tiene sentido");
             //if 100 get final, otherwise, calc the remaining
         }
         const finalScore = getFinalScore({ grades: gradeList });

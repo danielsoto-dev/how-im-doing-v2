@@ -1,6 +1,7 @@
-import GradeList from '../../components/GradeList';
-import { Wrapper, GradesContainer } from './styles';
-export const Main = () => {
+import GradeList from "../../components/GradeList";
+import { Wrapper, GradesContainer } from "./styles";
+
+export default Main = () => {
     return (
         <Wrapper>
             <GradesContainer>
