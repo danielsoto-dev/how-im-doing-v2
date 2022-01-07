@@ -28,7 +28,7 @@ export default Header = () => {
                 handleClose={closeModal}
                 title={"Config"}
             >
-                <ConfigForm />
+                <ConfigForm closeModal={closeModal} />
             </Modal>
         </>
     );

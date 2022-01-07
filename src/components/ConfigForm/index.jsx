@@ -1,14 +1,58 @@
+import { useState } from "react";
+import { isValidNumber } from "../../utils/field-validations";
 import { Form, Input, Label, SaveIcon } from "./styles";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button";
-export default ConfigForm = () => {
+import { updateConfig } from "../../actions";
+export default ConfigForm = ({ closeModal }) => {
+    const dispatch = useDispatch();
+    const { desiredGrade: initialDesiredGrade, maxGrade: initialMaxGrade } =
+        useSelector((state) => state.config);
+    const [desiredGrade, setDesiredGrade] = useState(+initialDesiredGrade);
+    const [maxGrade, setMaxGrade] = useState(+initialMaxGrade);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(
+            updateConfig({
+                config: {
+                    desiredGrade,
+                    maxGrade,
+                },
+            })
+        );
+        closeModal();
+    };
+    const handleChangeDesiredGrade = (e) => {
+        const { value } = e.target;
+        if (isValidNumber(value)) {
+            setDesiredGrade(value);
+        }
+    };
+    const handleChangeMaxGrade = (e) => {
+        const { value } = e.target;
+        if (isValidNumber(value)) {
+            setMaxGrade(value);
+        }
+    };
     return (
-        <Form>
-            <Label>Nota deseada:</Label>
-            <Input />
-            <Label>Nota maxima:</Label>
-            <Input />
-            <Button modifier="cancel">Cancel</Button>
-            <Button type="submit">
+        <Form onSubmit={handleSubmit}>
+            <Label htmlFor="desiredGrade">Desired Grade:</Label>
+            <Input
+                id="desiredGrade"
+                type="text"
+                inputMode="numeric"
+                onChange={handleChangeDesiredGrade}
+                value={desiredGrade}
+            />
+            <Label htmlFor="maxGrade">Maximun Grade:</Label>
+            <Input
+                id="maxGrade"
+                type="text"
+                inputMode="numeric"
+                onChange={handleChangeMaxGrade}
+                value={maxGrade}
+            />
+            <Button>
                 Save <SaveIcon />
             </Button>
         </Form>

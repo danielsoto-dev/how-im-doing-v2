@@ -1,4 +1,10 @@
-import { ADD_GRADE, CLEAR_LIST, REMOVE_GRADE, UPDATE_GRADE } from './actions';
+import {
+    UPDATE_CONFIG,
+    ADD_GRADE,
+    CLEAR_LIST,
+    REMOVE_GRADE,
+    UPDATE_GRADE,
+} from "./actions";
 
 export const initalState = {
     config: {
@@ -15,9 +21,9 @@ export const reducer = (state = initalState, action) => {
     //! Rename to be consistent
     if (type == ADD_GRADE) {
         const defaultGrade = {
-            grade: '5',
-            percentage: '20%',
-            name: '',
+            grade: "5",
+            percentage: "20%",
+            name: "",
         };
         const newGrade = { ...defaultGrade, uuid: id++ };
         return {
@@ -30,7 +36,7 @@ export const reducer = (state = initalState, action) => {
             (el) => el.uuid !== payload.uuid
         );
         return {
-            ...initalState,
+            ...state,
             gradeList: updatedGradeList,
         };
     }
@@ -45,15 +51,25 @@ export const reducer = (state = initalState, action) => {
         const updatedGradeList = [...currentGradeList];
         updatedGradeList[dirtyGradeUUID] = updatedSlot;
         return {
-            ...initalState,
+            ...state,
             gradeList: updatedGradeList,
         };
     }
     if (type == CLEAR_LIST) {
         return {
-            ...initalState,
+            ...state,
             gradeList: [],
         };
+    }
+
+    //Actions for config
+    if (type == UPDATE_CONFIG) {
+        let newState = {
+            ...state,
+            config: payload.config,
+        };
+        console.log(state, newState);
+        return newState;
     }
     return state;
 };

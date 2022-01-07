@@ -9,8 +9,9 @@ import {
     getNeededScoreForDesiredScore,
     isTotalPercentageCorrect,
 } from "../../utils/calculations";
-export default GradegradeList = () => {
+export default GradeList = () => {
     const gradeList = useSelector((state) => state.gradeList);
+    const { desiredGrade } = useSelector((state) => state.config);
     const dispatch = useDispatch();
     const handleClickAdd = (e) => {
         e.preventDefault();
@@ -31,7 +32,7 @@ export default GradegradeList = () => {
             //if 100 get final, otherwise, calc the remaining
         }
         const finalScore = getFinalScore({ grades: gradeList });
-        getNeededScoreForDesiredScore({ desiredScore: 5, grades: gradeList });
+        getNeededScoreForDesiredScore({ desiredGrade, grades: gradeList });
         alert(finalScore);
         /* make the calculations */
     };

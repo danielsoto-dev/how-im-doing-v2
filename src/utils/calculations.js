@@ -8,7 +8,7 @@
 const INITIAL_COUNT = 0;
 //Naming
 const percentageToNumber = (percentage) => {
-    return Number(percentage.split('%')[0]);
+    return Number(percentage.split("%")[0]);
 };
 
 //Reducer functions to get the totals
@@ -35,8 +35,8 @@ export const isTotalPercentageCorrect = ({ grades }) => {
 };
 
 // Check Naming
-export const getNeededScoreForDesiredScore = ({ desiredScore, grades }) => {
-    console.log(desiredScore, grades);
+export const getNeededScoreForDesiredScore = ({ desiredGrade, grades }) => {
+    console.log(desiredGrade, grades);
     const partialScore = getFinalScore({ grades });
     const partialPercentage = grades.reduce(
         sumPercentagesReducer,
@@ -44,9 +44,9 @@ export const getNeededScoreForDesiredScore = ({ desiredScore, grades }) => {
     );
     const remainingPercentage = 100 - partialPercentage;
     const remainingScore =
-        (desiredScore - partialScore) / (remainingPercentage / 100);
+        (desiredGrade - partialScore) / (remainingPercentage / 100);
     console.log(
-        `For the desired score of: ${desiredScore}, you need a ${remainingScore} in the ${remainingPercentage}%`
+        `For the desired score of: ${desiredGrade}, you need a ${remainingScore} in the ${remainingPercentage}%`
     );
 };
 // check for refactor, if % equals to 100%, then final score, otherwise,
