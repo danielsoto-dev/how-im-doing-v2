@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { IoMdSave } from "react-icons/io";
+import Button from "../Button";
 export const Form = styled.form`
     display: grid;
     padding: 2rem;
@@ -32,4 +33,9 @@ export const SaveIcon = styled(IoMdSave)`
     display: inline;
     flex-shrink: 0;
     margin-left: 1rem;
+`;
+export const FormButton = styled(Button)`
+    grid-column: span 2;
+    justify-self: center;
+    border-bottom: 1px solid var(--dark);
 `;

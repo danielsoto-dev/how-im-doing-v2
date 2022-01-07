@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { isValidNumber } from "../../utils/field-validations";
-import { Form, Input, Label, SaveIcon } from "./styles";
+import { Form, Input, Label, SaveIcon, FormButton } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../Button";
+// import Button from "../Button";
 import { updateConfig } from "../../actions";
 export default ConfigForm = ({ closeModal }) => {
     const dispatch = useDispatch();
@@ -52,9 +52,9 @@ export default ConfigForm = ({ closeModal }) => {
                 onChange={handleChangeMaxGrade}
                 value={maxGrade}
             />
-            <Button>
+            <FormButton>
                 Save <SaveIcon />
-            </Button>
+            </FormButton>
         </Form>
     );
 };
