@@ -1,4 +1,5 @@
-import { Form, Input, Label, Button } from "./styles";
+import { Form, Input, Label, SaveIcon } from "./styles";
+import Button from "../Button";
 export default ConfigForm = () => {
     return (
         <Form>
@@ -6,8 +7,10 @@ export default ConfigForm = () => {
             <Input />
             <Label>Nota maxima:</Label>
             <Input />
-
-            <Button type="submit"></Button>
+            <Button modifier="cancel">Cancel</Button>
+            <Button type="submit">
+                Save <SaveIcon />
+            </Button>
         </Form>
     );
 };

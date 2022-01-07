@@ -5,7 +5,11 @@ export const GlobalStyle = createGlobalStyle`
 :root {
     --blue: #3590f3;
     --white: #fff;
+    --darker-white: #f2f2f2;
     --active-blue: #52a3fadc;
+    --red: #f35835;
+    --darker-red: #dc330d;
+    --dark: #002143;
 }
 
 /*
@@ -38,6 +42,7 @@ body,
 body {
     font-family: 'Open Sans';
     font-size:20px;
+    color: var(--dark);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }

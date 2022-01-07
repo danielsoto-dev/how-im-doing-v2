@@ -41,7 +41,7 @@ export const CloseButton = styled.button`
     cursor: pointer;
     transition: 0.3s ease all;
     border-radius: 5px;
-    color: #1766dc;
+    color: var(--blue);
     &:hover {
         background-color: #f2f2f2;
     }

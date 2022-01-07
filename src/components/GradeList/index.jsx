@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addGrade, clearList } from "../../actions";
-import { Form, ButtonContainer, Button } from "./styles";
+import { Form, ButtonContainer } from "./styles";
+import Button from "../Button";
 import GradeSlot from "../GradeSlot";
 import {
     getFinalScore,

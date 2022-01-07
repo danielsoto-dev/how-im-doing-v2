@@ -1,25 +1,35 @@
-import styledComponents from "styled-components";
 import styled from "styled-components";
-
+import { IoMdSave } from "react-icons/io";
 export const Form = styled.form`
     display: grid;
-    grid-template-columns: 300px 5ch;
+    padding: 2rem;
+    gap: 20px;
     justify-content: center;
     align-items: center;
     display: grid;
-    grid-template-columns: max(1fr, 20px) 5ch;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(1fr, 3);
 `;
-export const Button = styled.button``;
-export const Label = styled.label``;
+
+export const Label = styled.label`
+    justify-self: center;
+`;
 export const Input = styled.input`
     height: 25px;
     padding: 1px 10px;
     border: none;
-    /* border-radius: 24px; */
+    max-width: 7ch;
+    justify-self: center;
     transition: background-color 300ms;
     background-color: #e5efff;
     &:focus {
         transition: background-color 200ms;
         background-color: var(--white);
     }
+`;
+
+export const SaveIcon = styled(IoMdSave)`
+    display: inline;
+    flex-shrink: 0;
+    margin-left: 1rem;
 `;
