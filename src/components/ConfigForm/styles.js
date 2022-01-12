@@ -37,5 +37,5 @@ export const SaveIcon = styled(IoMdSave)`
 export const FormButton = styled(Button)`
     grid-column: span 2;
     justify-self: center;
-    border-bottom: 1px solid var(--dark);
+    /* border-bottom: 1px solid var(--dark); */
 `;

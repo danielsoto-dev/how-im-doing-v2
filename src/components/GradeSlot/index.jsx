@@ -29,6 +29,8 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 if (isValidNumber(value)) {
                     isValid = true;
                 }
+            case "name":
+                isValid = true;
             default:
                 break;
         }
@@ -42,13 +44,6 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
         }
         dispatch(updateGrade({ value, field, uuid }));
     };
-    // const handleOnFocusPercentage = ({ target: { value, id: field } }) => {
-    //     const hasPercentageSymbol = value.includes("%");
-    //     if (hasPercentageSymbol) {
-    //         value = value.replace("%", "");
-    //     }
-    //     dispatch(updateGrade({ value, field, uuid }));
-    // };
     return (
         <Slot
             key={uuid}
