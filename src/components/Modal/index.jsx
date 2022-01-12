@@ -1,4 +1,5 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import { CloseButton, ModalContainer, ModalHeader, Overlay } from "./styles";
 export default Modal = ({
     children,
@@ -8,12 +9,18 @@ export default Modal = ({
     onClose,
     isOpen,
     handleClose,
-    title,
+    title = "",
 }) => {
     if (!isOpen) {
         return null;
     }
-    return (
+    let Title =
+        title.length > 0 ? (
+            <ModalHeader>
+                <h3>{title}</h3>
+            </ModalHeader>
+        ) : null;
+    return createPortal(
         <>
             <Overlay>
                 <ModalContainer
@@ -21,15 +28,14 @@ export default Modal = ({
                     minHeight={minHeight}
                     height={height}
                 >
-                    <ModalHeader>
-                        <h3>{title}</h3>
-                    </ModalHeader>
+                    {Title}
                     {children}
                     <CloseButton onClick={() => handleClose()}>
                         Close
                     </CloseButton>
                 </ModalContainer>
             </Overlay>
-        </>
+        </>,
+        document.getElementById("portal")
     );
 };

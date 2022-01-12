@@ -1,6 +1,6 @@
-import Modal from "../../components/Modal";
-import { SHeader, Logo, NavBar } from "./styles";
 import { useState } from "react";
+import { SHeader, Logo, NavBar } from "./styles";
+import Modal from "../../components/Modal";
 import ConfigForm from "../ConfigForm";
 export default Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);

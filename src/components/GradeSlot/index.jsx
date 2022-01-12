@@ -59,7 +59,7 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 value={name}
             />
             <Input
-                required
+                // required
                 id="grade"
                 aria-label="Grade input"
                 type="text"

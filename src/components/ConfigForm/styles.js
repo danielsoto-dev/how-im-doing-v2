@@ -13,6 +13,7 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
+    cursor: pointer;
     justify-self: center;
 `;
 export const Input = styled.input`

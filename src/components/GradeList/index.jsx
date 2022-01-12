@@ -9,7 +9,7 @@ import {
     getNeededScoreForDesiredScore,
     isTotalPercentageCorrect,
 } from "../../utils/calculations";
-export default GradeList = () => {
+export default GradeList = ({ openModal }) => {
     const gradeList = useSelector((state) => state.gradeList);
     const { desiredGrade } = useSelector((state) => state.config);
     const dispatch = useDispatch();
@@ -31,9 +31,9 @@ export default GradeList = () => {
             console.log("El total tiene sentido");
             //if 100 get final, otherwise, calc the remaining
         }
-        const finalScore = getFinalScore({ grades: gradeList });
-        getNeededScoreForDesiredScore({ desiredGrade, grades: gradeList });
-        alert(finalScore);
+
+        openModal();
+        // alert(finalScore);
         /* make the calculations */
     };
 
