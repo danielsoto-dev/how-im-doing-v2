@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SHeader, Logo, NavBar } from "./styles";
+import { SHeader, Logo, NavBar, Link } from "./styles";
 import Modal from "../../components/Modal";
 import ConfigForm from "../ConfigForm";
 export default Header = () => {
@@ -14,13 +14,14 @@ export default Header = () => {
     return (
         <>
             <SHeader>
-                <a href="/">
+                <Link href="/">
                     <Logo className="title">HowI'mDoing</Logo>
-                </a>
+                </Link>
                 <NavBar>
-                    <a href="#" onClick={() => openModal()}>
+                    <Link href="#">About the Dev</Link>
+                    <Link href="#" onClick={() => openModal()}>
                         Config
-                    </a>
+                    </Link>
                 </NavBar>
             </SHeader>
             <Modal

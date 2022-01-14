@@ -18,3 +18,7 @@ export const NavBar = styled.nav`
     justify-content: space-around;
     align-items: center;
 `;
+
+export const Link = styled.a`
+    margin-right: 1rem;
+`;

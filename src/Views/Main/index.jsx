@@ -1,9 +1,14 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import HomeSvg from "../../assets/svg/HomeSvg";
 import GradeList from "../../components/GradeList";
-import { Wrapper, GradesContainer } from "./styles";
+import { Wrapper, GradesContainer, MainTitle } from "./styles";
+import { addGrade } from "../../actions";
 import Result from "../../components/Result";
 import Modal from "../../components/Modal";
 export default Main = () => {
+    const gradeList = useSelector((state) => state.gradeList);
+    const dispatch = useDispatch();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => {
         setIsModalOpen(true);
@@ -12,12 +17,27 @@ export default Main = () => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
+    const handleAddGrade = () => {
+        dispatch(addGrade());
+    };
     return (
         <Wrapper>
             <GradesContainer>
-                <h2>Type your grades! 📚</h2>
-                <h3>Let's start!</h3>
-                <GradeList openModal={openModal} />
+                <MainTitle>Type your grades! 📚</MainTitle>
+
+                {gradeList.length > 0 ? (
+                    <GradeList openModal={openModal} />
+                ) : (
+                    <>
+                        <Button
+                            style={{ marginBottom: "100px" }}
+                            onClick={handleAddGrade}
+                        >
+                            Click me to start!
+                        </Button>
+                        <HomeSvg width="400px" />
+                    </>
+                )}
                 <Modal
                     isOpen={isModalOpen}
                     handleClose={closeModal}
