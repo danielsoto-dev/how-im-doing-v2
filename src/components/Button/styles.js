@@ -40,5 +40,9 @@ export const StyledButton = styled.button`
             getBgColor({ modifier, isHover: true })};
         transition: background-color 200ms;
     }
+    &:disabled {
+        transition: 200ms text-decoration;
+        text-decoration: line-through;
+    }
     /* grid-column: span 2; */
 `;

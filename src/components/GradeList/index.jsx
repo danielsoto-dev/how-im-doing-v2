@@ -1,18 +1,21 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addGrade, clearList } from "../../actions";
 import { Form, ButtonContainer } from "./styles";
 import Button from "../Button";
 import GradeSlot from "../GradeSlot";
-import {
-    getFinalScore,
-    getNeededScoreForDesiredScore,
-    isTotalPercentageCorrect,
-} from "../../utils/calculations";
+import { isTotalPercentageCorrect } from "../../utils/calculations";
 export default GradeList = ({ openModal }) => {
+    const [disableSubmit, setDisableSubmit] = useState(false);
     const gradeList = useSelector((state) => state.gradeList);
-    const { desiredGrade } = useSelector((state) => state.config);
     const dispatch = useDispatch();
+    useEffect(() => {
+        if (!isTotalPercentageCorrect({ grades: gradeList })) {
+            setDisableSubmit(true);
+            return;
+        }
+        setDisableSubmit(false);
+    }, [gradeList]);
     const handleClickAdd = (e) => {
         e.preventDefault();
         dispatch(addGrade());
@@ -23,14 +26,6 @@ export default GradeList = ({ openModal }) => {
     };
     const handleClickSubmit = (e) => {
         e.preventDefault();
-        if (!isTotalPercentageCorrect({ grades: gradeList })) {
-            //add logic for percentage error
-            console.log("no tiene sentido el porcentage");
-            return;
-        } else {
-            console.log("El total tiene sentido");
-            //if 100 get final, otherwise, calc the remaining
-        }
 
         openModal();
         // alert(finalScore);
@@ -60,9 +55,11 @@ export default GradeList = ({ openModal }) => {
                         Reset List
                     </Button>
                     <Button type="button" onClick={handleClickAdd}>
-                        Add a term
+                        Add a Grade
                     </Button>
-                    <Button type="submit">Calc 🧮</Button>
+                    <Button type="submit" disabled={disableSubmit}>
+                        Submit
+                    </Button>
                 </ButtonContainer>
             </Form>
         </Fragment>

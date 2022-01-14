@@ -38,6 +38,10 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
             dispatch(updateGrade({ value, field, uuid }));
         }
     };
+    const handleOnFocusPercentage = ({ target: { value, id: field } }) => {
+        value = value.replace("%", "");
+        dispatch(updateGrade({ value, field, uuid }));
+    };
     const handleOnBlurPercentage = ({ target: { value, id: field } }) => {
         if (!value.includes("%")) {
             value = `${value}%`;
@@ -59,7 +63,7 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 value={name}
             />
             <Input
-                // required
+                required
                 id="grade"
                 aria-label="Grade input"
                 type="text"
@@ -75,7 +79,7 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 onChange={handleChange}
                 placeholder="%"
                 value={percentage}
-                // onFocus={handleOnFocusPercentage}
+                onFocus={handleOnFocusPercentage}
                 onBlur={handleOnBlurPercentage}
                 // isValid={isValidPercentage(percentage)} // false or true
             />

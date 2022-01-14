@@ -1,34 +1,39 @@
 import { useSelector } from "react-redux";
 import {
-    getFinalScore,
     getNeededScoreForDesiredScore,
+    getTotalScore,
 } from "../../utils/calculations";
 import { getIDsOfEmptySlots } from "../../utils/grade-list-operations";
-const CONGRATULATION_MSM = `Congrats!! You reach your desired grade 🥳`;
-const PASSING_GRADE = 3;
+import { getMsm, getScoreText, getTitle } from "./result-utils";
+import { ResultContainer, Text } from "./styles";
+
+const DECIMALS = 2;
 export default Result = () => {
     const gradeList = useSelector((state) => state.gradeList);
-    const desiredGrade = useSelector((state) => state.config.desiredGrade);
-    const finalScore = getFinalScore({ grades: gradeList });
-    const ids = getIDsOfEmptySlots(gradeList);
+    const { desiredGrade, maxGrade } = useSelector((state) => state.config);
+    const finalScore = getTotalScore({ grades: gradeList });
     //Add precision
-    const fixedFinalScore = finalScore.toFixed(2);
-    const neededScore = getNeededScoreForDesiredScore({
-        desiredGrade,
-        grades: gradeList,
+    const fixedFinalScore = finalScore.toFixed(DECIMALS);
+    const { remainingPercentage, remainingScore } =
+        getNeededScoreForDesiredScore({
+            desiredGrade,
+            grades: gradeList,
+        });
+    let scoreText = getScoreText({
+        remainingPercentage,
+        fixedFinalScore,
     });
-    // add pass note
-    let msm = null;
-    if (fixedFinalScore > PASSING_GRADE) {
-        msm = <p>{CONGRATULATION_MSM}</p>;
-    } else {
-        msm = <h1>:'C</h1>;
-    }
+    let msm = getMsm({ fixedFinalScore, desiredGrade });
     return (
-        <>
-            <p>Your final grade is: {fixedFinalScore}</p>
-            {msm}
-            <p>In the {JSON.stringify(ids)}</p>
-        </>
+        <ResultContainer>
+            <Text>{scoreText}</Text>
+            {remainingPercentage !== 0 && (
+                <Text>
+                    You need {remainingScore} in the remaining{" "}
+                    {remainingPercentage}%
+                </Text>
+            )}
+            <Text>{msm}</Text>
+        </ResultContainer>
     );
 };
