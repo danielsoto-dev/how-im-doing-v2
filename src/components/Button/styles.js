@@ -43,6 +43,7 @@ export const StyledButton = styled.button`
     &:disabled {
         transition: 200ms text-decoration;
         text-decoration: line-through;
+        text-decoration-thickness: 1.5px;
     }
     /* grid-column: span 2; */
 `;

@@ -14,12 +14,13 @@ export default Header = () => {
     return (
         <>
             <SHeader>
-                <Link href="/">
+                <Link to="/">
                     <Logo className="title">HowI'mDoing</Logo>
                 </Link>
                 <NavBar>
-                    <Link href="#">About the Dev</Link>
-                    <Link href="#" onClick={() => openModal()}>
+                    <Link to="/">Calculator</Link>
+                    <Link to="/AboutMe">About the Dev</Link>
+                    <Link to="/" onClick={() => openModal()}>
                         Config
                     </Link>
                 </NavBar>
