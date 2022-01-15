@@ -107,8 +107,6 @@ a {
 `;
 export const Wrapper = styled.div`
     padding: 1.5rem;
+    position: relative;
     min-height: calc(100% - 160px);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
 `;
