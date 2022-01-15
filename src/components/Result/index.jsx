@@ -5,8 +5,8 @@ import {
 } from "../../utils/calculations";
 import { getMsm, getScoreText, getRemainingMsm } from "./result-utils";
 import { ResultContainer, Text } from "./styles";
+import { DECIMALS } from "../../utils/calculations";
 
-const DECIMALS = 2;
 export default Result = () => {
     const gradeList = useSelector((state) => state.gradeList);
     const { desiredGrade, maxGrade } = useSelector((state) => state.config);

@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import "@fontsource/open-sans";
 export const GlobalStyle = createGlobalStyle`
@@ -103,4 +104,11 @@ a {
 .shake{
     animation: shake 500ms ;
 }
+`;
+export const Wrapper = styled.div`
+    padding: 1.5rem;
+    min-height: calc(100% - 160px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 `;

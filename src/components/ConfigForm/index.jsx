@@ -52,7 +52,7 @@ export default ConfigForm = ({ closeModal }) => {
                 onChange={handleChangeMaxGrade}
                 value={maxGrade}
             />
-            <FormButton>
+            <FormButton onClick={handleSubmit}>
                 Save <SaveIcon />
             </FormButton>
         </Form>

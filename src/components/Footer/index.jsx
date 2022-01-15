@@ -1,11 +1,17 @@
-import styled from "styled-components";
-
+import { SFooter, FooterGrid } from "./styles";
+import { Link } from "react-router-dom";
 export default Footer = () => {
-    return <SFooter>Hi</SFooter>;
+    return (
+        <SFooter>
+            <FooterGrid>
+                <span>Terminos y Condiciones</span>
+                <span>
+                    Desarrollado por:
+                    <strong>
+                        <Link to="/">Daniel Soto</Link>
+                    </strong>
+                </span>
+            </FooterGrid>
+        </SFooter>
+    );
 };
-
-const SFooter = styled.div`
-    height: 80px;
-    background-color: var(--blue);
-    bottom: 0;
-`;

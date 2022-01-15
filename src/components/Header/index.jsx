@@ -19,7 +19,7 @@ export default Header = () => {
                 </Link>
                 <NavBar>
                     <Link to="/">Calculator</Link>
-                    <Link to="/AboutMe">About the Dev</Link>
+                    <Link to="/about">About</Link>
                     <Link to="/" onClick={() => openModal()}>
                         Config
                     </Link>

@@ -1,23 +1,23 @@
 import React from "react";
-import { FinalScoreText } from "./styles";
+import { DECIMALS } from "../../utils/calculations";
+import { ScoreText } from "./styles";
 import { Text } from "./styles";
-const CONGRATULATION_MSM = `Congrats!! You already reach your desired grade 🥳`;
-const MOTIVATION_MSM = `You still can pass!`;
-const FAIL_MSM = `You can't save this one dude😭`;
+const CONGRATULATION_MSM = `Congrats!! You already reach your desired grade of`;
+const MOTIVATION_MSM = `You still can get the grade!`;
+const FAIL_MSM = `You can't reach this one dude😭`;
 export const getScoreText = ({ remainingPercentage, fixedFinalScore }) => {
     let scoreText;
     if (remainingPercentage === 0) {
         scoreText = (
             <Text>
                 Your final score is:
-                <FinalScoreText>{fixedFinalScore}</FinalScoreText>
+                <ScoreText>{fixedFinalScore}</ScoreText>
             </Text>
         );
     } else {
         scoreText = (
             <Text>
-                Your current grade is{" "}
-                <FinalScoreText>{fixedFinalScore}</FinalScoreText>
+                Your current grade is <ScoreText>{fixedFinalScore}</ScoreText>
             </Text>
         );
     }
@@ -32,7 +32,12 @@ export const getMsm = ({
 }) => {
     let msm;
     if (fixedFinalScore >= desiredGrade) {
-        msm = <Text>{CONGRATULATION_MSM}</Text>;
+        msm = (
+            <Text>
+                {CONGRATULATION_MSM}{" "}
+                <ScoreText>{desiredGrade.toFixed(DECIMALS)}</ScoreText>{" "}
+            </Text>
+        );
     } else {
         if (fixedRemainingScore <= maxGrade) {
             msm = <Text>{MOTIVATION_MSM}</Text>;

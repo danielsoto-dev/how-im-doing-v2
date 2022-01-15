@@ -6,7 +6,7 @@ export const Text = styled.p`
     margin-bottom: 10px;
 `;
 
-export const FinalScoreText = styled.span`
+export const ScoreText = styled.span`
     font-weight: bold;
     color: var(--blue);
 `;

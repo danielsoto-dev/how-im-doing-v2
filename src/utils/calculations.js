@@ -46,3 +46,5 @@ export const getNeededScoreForDesiredScore = ({ desiredGrade, grades }) => {
         (desiredGrade - partialScore) / (remainingPercentage / 100);
     return { remainingPercentage, remainingScore };
 };
+
+export const DECIMALS = 2;

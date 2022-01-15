@@ -21,31 +21,25 @@ export default Main = () => {
         dispatch(addGrade());
     };
     return (
-        <Wrapper>
-            <GradesContainer>
-                <MainTitle>Type your grades! 📚</MainTitle>
+        <GradesContainer>
+            <MainTitle>Type your grades! 📚</MainTitle>
 
-                {gradeList.length > 0 ? (
-                    <GradeList openModal={openModal} />
-                ) : (
-                    <>
-                        <Button
-                            style={{ marginBottom: "100px" }}
-                            onClick={handleAddGrade}
-                        >
-                            Click me to start!
-                        </Button>
-                        <HomeSvg width="400px" />
-                    </>
-                )}
-                <Modal
-                    isOpen={isModalOpen}
-                    handleClose={closeModal}
-                    title="Result"
-                >
-                    <Result />
-                </Modal>
-            </GradesContainer>
-        </Wrapper>
+            {gradeList.length > 0 ? (
+                <GradeList openModal={openModal} />
+            ) : (
+                <>
+                    <Button
+                        style={{ marginBottom: "100px" }}
+                        onClick={handleAddGrade}
+                    >
+                        Click me to start!
+                    </Button>
+                    <HomeSvg width="400px" />
+                </>
+            )}
+            <Modal isOpen={isModalOpen} handleClose={closeModal} title="Result">
+                <Result />
+            </Modal>
+        </GradesContainer>
     );
 };
