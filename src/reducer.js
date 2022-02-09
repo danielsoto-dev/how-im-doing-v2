@@ -21,8 +21,8 @@ export const reducer = (state = initalState, action) => {
     //! Rename to be consistent
     if (type == ADD_GRADE) {
         const defaultGrade = {
-            grade: "5",
-            percentage: "20%",
+            grade: "",
+            percentage: "",
             name: "",
         };
         const newGrade = { ...defaultGrade, uuid: id++ };

@@ -7,7 +7,7 @@ export const Slot = styled.div`
     display: grid;
     align-items: center;
     grid-template-columns:
-        minmax(145px, 400px) repeat(2, minmax(5ch, 60px))
+        minmax(145px, 300px) repeat(2, minmax(5ch, 80px))
         repeat(2, minmax(30px, 35px));
     column-gap: 0.25rem;
     //Exit duration
@@ -30,6 +30,14 @@ export const Input = styled.input`
     &:focus {
         transition: background-color 200ms;
         background-color: var(--white);
+    }
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    ::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 `;
 

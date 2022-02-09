@@ -4,7 +4,7 @@
   "description": "An app for calculating grades, by a student for the students",
   "scripts": {
     "dev": "parcel src/index.html",
-    "predeploy": "parcel build ./src/index.html",
+    "predeploy": "parcel build ./src/index.html --public-url ./ --no-scope-hoist",
     "deploy": "gh-pages -d dist",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
@@ -38,7 +38,6 @@
     "prettier": "^2.5.1"
   },
   "dependencies": {
-    "@swc/helpers": "^1.0.0",
     "@fontsource/open-sans": "^4.5.2",
     "@parcel/transformer-svg-react": "^2.2.0",
     "react": "^17.0.2",
