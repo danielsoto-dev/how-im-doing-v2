@@ -6,7 +6,7 @@ export default Footer = () => {
             <FooterGrid>
                 <span>Terminos y Condiciones</span>
                 <span>
-                    Desarrollado por:
+                    Develop by:{" "}
                     <strong>
                         <Link to="/">Daniel Soto</Link>
                     </strong>

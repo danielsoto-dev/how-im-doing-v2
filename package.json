@@ -2,10 +2,9 @@
   "name": "how-im-doing-v2",
   "version": "1.0.0",
   "description": "An app for calculating grades, by a student for the students",
-  "main": "App.js",
   "scripts": {
     "dev": "parcel src/index.html",
-    "predeploy": "parcel build",
+    "predeploy": "parcel build ./src/index.html",
     "deploy": "gh-pages -d dist",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
@@ -25,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/danielsoto-dev/how-im-doing-v2/issues"
   },
-  "homepage": "https://github.com/danielsoto-dev/how-im-doing-v2",
+"homepage": "http://danielsoto-dev.github.io/how-im-doing-v2",
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.2",
     "eslint": "^8.4.1",
@@ -39,6 +38,7 @@
     "prettier": "^2.5.1"
   },
   "dependencies": {
+    "@swc/helpers": "^1.0.0",
     "@fontsource/open-sans": "^4.5.2",
     "@parcel/transformer-svg-react": "^2.2.0",
     "react": "^17.0.2",
