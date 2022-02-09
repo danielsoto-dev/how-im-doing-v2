@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel src/index.html",
     "predeploy": "parcel build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
   },
@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/danielsoto-dev/how-im-doing-v2/issues"
   },
-  "homepage": "https://github.com/danielsoto-dev/how-im-doing-v2#readme",
+  "homepage": "https://github.com/danielsoto-dev/how-im-doing-v2",
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.2",
     "eslint": "^8.4.1",
