@@ -23,7 +23,7 @@ const sumPercentagesReducer = (acc, { percentage }) => {
     return acc + percentageToNumber(percentage);
 };
 // Functions for getting the total value out of the array, and add functionality
-const getTotalPercentage = ({ grades, INITIAL_COUNT = 0 }) => {
+export const getTotalPercentage = ({ grades, INITIAL_COUNT = 0 }) => {
     return grades.reduce(sumPercentagesReducer, INITIAL_COUNT);
 };
 export const getTotalScore = ({ grades, INITIAL_COUNT = 0 }) => {

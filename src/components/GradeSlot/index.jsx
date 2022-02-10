@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import { IconContext } from "react-icons/lib";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addGrade } from "../../actions";
 import { IconButton, AddIcon, DeleteIcon, Slot, Input } from "./styles";
 import { removeGrade, updateGrade } from "../../actions";
@@ -7,8 +8,11 @@ import {
     isValidNumber,
     isValidPercentage,
 } from "../../utils/field-validations";
+import { toastConfig, notifyError } from "../../utils/toast-utils";
 export default GradeSlot = ({ name, grade, percentage, uuid }) => {
     const dispatch = useDispatch();
+    const toastId = useRef(null);
+    const maxGrade = useSelector((state) => state.config.maxGrade);
     const handleRemove = () => {
         dispatch(removeGrade({ uuid }));
     };
@@ -18,24 +22,33 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
     const handleChange = (e) => {
         e.preventDefault();
         const { value, id: field } = e.target;
-        let isValid = false;
+        let isValid = true;
+        let errorMsm = "";
         switch (field) {
             case "percentage":
-                if (isValidPercentage(value)) {
-                    isValid = true;
+                if (!isValidPercentage(value)) {
+                    isValid = false;
+                    errorMsm = "The percentage must be a number";
                 }
                 break;
             case "grade":
-                if (isValidNumber(value)) {
-                    isValid = true;
+                if (Number(value) > maxGrade) {
+                    isValid = false;
+                    errorMsm = `The grade must be less or equal to ${maxGrade}`;
+                    break;
                 }
-            case "name":
-                isValid = true;
+                if (!isValidNumber(value)) {
+                    isValid = false;
+                    errorMsm = "The grade must be a number";
+                }
+                break;
             default:
                 break;
         }
         if (isValid) {
             dispatch(updateGrade({ value, field, uuid }));
+        } else {
+            notifyError({ errorMsm, toastConfig, toastId });
         }
     };
     const handleOnFocusPercentage = ({ target: { value, id: field } }) => {
@@ -49,11 +62,7 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
         dispatch(updateGrade({ value, field, uuid }));
     };
     return (
-        <Slot
-            key={uuid}
-            // className={shake ? "shake" : false}
-            // onAnimationEnd={() => setShake(false)}
-        >
+        <Slot key={uuid}>
             <Input
                 id="name"
                 aria-label="Name Of Slot input"
@@ -81,7 +90,6 @@ export default GradeSlot = ({ name, grade, percentage, uuid }) => {
                 value={percentage}
                 onFocus={handleOnFocusPercentage}
                 onBlur={handleOnBlurPercentage}
-                // isValid={isValidPercentage(percentage)} // false or true
             />
             <IconContext.Provider value={{ style: { fontSize: "24px" } }}>
                 <IconButton type="button" onClick={handleAdd}>

@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/danielsoto-dev/how-im-doing-v2/issues"
   },
-"homepage": "http://danielsoto-dev.github.io/how-im-doing-v2",
+  "homepage": "http://danielsoto-dev.github.io/how-im-doing-v2",
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.2",
     "eslint": "^8.4.1",
@@ -45,6 +45,7 @@
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
+    "react-toastify": "^8.1.1",
     "redux": "^4.1.2",
     "styled-components": "^5.3.3"
   },

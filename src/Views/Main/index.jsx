@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import HomeSvg from "../../assets/svg/HomeSvg";
 import GradeList from "../../components/GradeList";
-import { Wrapper, GradesContainer, MainTitle } from "./styles";
+import { GradesContainer, MainTitle } from "./styles";
 import { addGrade } from "../../actions";
 import Result from "../../components/Result";
 import Modal from "../../components/Modal";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default Main = () => {
     const gradeList = useSelector((state) => state.gradeList);
     const dispatch = useDispatch();
@@ -23,7 +25,6 @@ export default Main = () => {
     return (
         <GradesContainer>
             <MainTitle>Type your grades! 📚</MainTitle>
-
             {gradeList.length > 0 ? (
                 <GradeList openModal={openModal} />
             ) : (
@@ -40,6 +41,7 @@ export default Main = () => {
             <Modal isOpen={isModalOpen} handleClose={closeModal} title="Result">
                 <Result />
             </Modal>
+            <ToastContainer />
         </GradesContainer>
     );
 };

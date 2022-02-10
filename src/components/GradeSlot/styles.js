@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { HiPlusSm } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
+
 export const Slot = styled.div`
     padding: 0.5rem 1.25rem;
     background-color: #3590f3;
