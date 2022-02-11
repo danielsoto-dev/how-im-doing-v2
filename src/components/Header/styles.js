@@ -51,13 +51,23 @@ export const BurgerButton = styled.button`
 
 export const Link = styled(RouterLink)`
     margin-right: 1rem;
+    position: relative;
     &::after {
-        opacity: 1;
-        transform: translate3d(-100%, 0, 0);
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0.1em;
+        background-color: var(--darker-white);
+        opacity: 0;
+        width: 0px;
+        transition: opacity 300ms, width 500ms;
     }
-
     &:hover::after,
     &:focus::after {
+        width: 100%;
+        opacity: 1;
         transform: translate3d(0, 0, 0);
     }
 `;

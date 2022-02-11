@@ -24,11 +24,11 @@ export default Header = () => {
                 </BurgerButton>
 
                 <NavBar isOpen={isMenuOpen} onClick={handleNavBarClick}>
-                    <Link to="/">Calculator</Link>
-                    <Link to="/about">About</Link>
+                    <Link to="/">Calculator</Link>{" "}
                     <Link to="/" onClick={openModal}>
                         Config
                     </Link>
+                    <Link to="/about">About</Link>
                 </NavBar>
             </SHeader>
             <Modal

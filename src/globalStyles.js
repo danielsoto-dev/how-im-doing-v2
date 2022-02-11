@@ -33,9 +33,9 @@ export const GlobalStyle = createGlobalStyle`
 html,
 body,
 #root {
-  overflow: hidden;
     height: 100%;
 }
+
 /*
   Typographic tweaks!
   4. Add accessible line-height

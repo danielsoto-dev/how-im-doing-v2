@@ -10,4 +10,5 @@ export const GradesContainer = styled.div`
 `;
 export const MainTitle = styled.h2`
     margin-bottom: 40px;
+    text-align: center;
 `;
