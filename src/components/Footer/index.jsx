@@ -1,5 +1,4 @@
-import { SFooter } from "./styles";
-import { Link } from "react-router-dom";
+import { SFooter, Link } from "./styles";
 export default Footer = () => {
     return (
         <SFooter>

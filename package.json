@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An app for calculating grades, by a student for the students",
   "scripts": {
-    "dev": "parcel src/index.html",
+    "dev": "parcel ./src/index.html",
     "predeploy": "parcel build ./src/index.html --public-url ./ --no-scope-hoist",
     "deploy": "gh-pages -d dist",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/danielsoto-dev/how-im-doing-v2/issues"
   },
-  "homepage": "http://danielsoto-dev.github.io/how-im-doing-v2",
+  "homepage": "https://danielsoto-dev.github.io/how-im-doing-v2",
   "devDependencies": {
     "babel-plugin-styled-components": "^2.0.2",
     "eslint": "^8.4.1",
